@@ -6,7 +6,7 @@ void translate(int readSizeX, int readSizeY) {
   //scale = "ABCDEFG";
   noStroke();
   for(int y = 0; y < height / readSizeY; y++) {
-    output.print("<< \"");
+    output.print("\t<< \"");
     for(int x = 0; x < width / readSizeX; x ++) {
       PImage zone = src.get(x * readSizeX, y * readSizeY, readSizeX, readSizeY);
       int value = getValue(zone);
