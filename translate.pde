@@ -1,7 +1,15 @@
-void translate(int readSize) {
-  for(int y = 0; y < height / readSize; y++) {
-    for(int x = 0; x < width / readSize; x ++) {
-      rect(x * readSize, y * readSize, readSize, readSize);
+void translate(int readSizeX, int readSizeY) {
+  String scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
+  noStroke();
+  for(int y = 0; y < height / readSizeY; y++) {
+    for(int x = 0; x < width / readSizeX; x ++) {
+      PImage zone = src.get(x * readSizeX, y * readSizeY, readSizeX, readSizeY);
+      int value = getValue(zone);
+      int index = (int(map(value, 0, 255, 0, scale.length())));
+      print(scale.charAt(index));
+      fill(value);
+      rect(x * readSizeX, y * readSizeY, readSizeX, readSizeY);
     }
+    println();
   }
 }
