@@ -6,5 +6,5 @@ int getValue(PImage analyse) {
     total += green(analyse.pixels[a]);
     total += blue(analyse.pixels[a]);
   }
-  return total / (analyse.pixels.length * 3);
+  return 255 - total / (analyse.pixels.length * 3);
 }
