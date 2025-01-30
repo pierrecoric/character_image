@@ -1,4 +1,6 @@
 void translate(int readSizeX, int readSizeY) {
+  PrintWriter output;
+  output = createWriter("out.txt"); 
   String scale = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
   noStroke();
   for(int y = 0; y < height / readSizeY; y++) {
@@ -6,10 +8,12 @@ void translate(int readSizeX, int readSizeY) {
       PImage zone = src.get(x * readSizeX, y * readSizeY, readSizeX, readSizeY);
       int value = getValue(zone);
       int index = (int(map(value, 0, 255, 0, scale.length())));
-      print(scale.charAt(index));
+      output.print(scale.charAt(index));
       fill(value);
       rect(x * readSizeX, y * readSizeY, readSizeX, readSizeY);
     }
-    println();
+    output.println();
   }
+  output.flush();
+  output.close();
 }
